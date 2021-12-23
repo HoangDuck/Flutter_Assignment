@@ -55,7 +55,7 @@ class _TestDidChangeDependenciesWidgetState extends State<TestDidChangeDependenc
 class ShareDataWidget extends InheritedWidget{
 
 
-  ShareDataWidget({required this.data,Widget? child}):super(child:child);
+  ShareDataWidget({Key? key, required this.data,required Widget child}):super(key: key, child: child);
   final int data;
   static ShareDataWidget? of(BuildContext context){
     return context.dependOnInheritedWidgetOfExactType<ShareDataWidget>();
@@ -63,6 +63,6 @@ class ShareDataWidget extends InheritedWidget{
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
-    return true;
+    return false;
   }
 }

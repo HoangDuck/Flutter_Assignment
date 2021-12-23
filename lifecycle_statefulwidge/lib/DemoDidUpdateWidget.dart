@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class Demo2 extends StatefulWidget {
-  const Demo2({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const Demo2({Key? key, this.title}) : super(key: key);
+  final String? title;
   @override
   _Demo2State createState() => _Demo2State();
 }
@@ -19,7 +19,10 @@ class _Demo2State extends State<Demo2> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          MyText(),
+          //MyText(),
+            _counter%2==0
+            ? MyText(key: ObjectKey("123"))
+            : MyText(key: ObjectKey("456")),
           Text(
             '$_counter',
             style: TextStyle(fontSize: 20),
