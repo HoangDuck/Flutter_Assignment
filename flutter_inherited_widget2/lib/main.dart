@@ -16,12 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: DemoInheritedWidget(
-          child: MyContainer(
+        body: MyContainer(
             child: const Counter(),
           ),
         ),
-      ),
     );
   }
 }
@@ -62,7 +60,7 @@ class _CounterState extends State<Counter> {
       child: Container(
         child: Column(
           children: [
-            Text(demo!.state!.data.toString(),style: TextStyle(fontSize: 40),),
+            Text(demo!.state!.data.toString(),style: const TextStyle(fontSize: 40),),
             RaisedButton(
                 onPressed: (){
                   demo.state!.increment();
