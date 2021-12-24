@@ -60,7 +60,7 @@ class _FutureWidgetState extends State<FutureWidget> {
                     // print("456");
                     // var i=await delayNumber();
                     // print(i);
-                    //getAge().then((value) => print(value));
+                    //getAge().then((value) => print(value)); cách làm này không cần từ khóa async
                     try{
                       var number= await delayNumberWithError();
                       print(number);
