@@ -1,10 +1,8 @@
 import 'package:bloc_demo/module/search/search_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 class Result extends StatefulWidget {
-  final SearchBloc? bloc;
-  const Result({Key? key,this.bloc}) : super(key: key);
-
   @override
   _ResultState createState() => _ResultState();
 }
@@ -12,17 +10,19 @@ class Result extends StatefulWidget {
 class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StreamBuilder<List<String>>(
-        initialData: [],
-        stream: widget.bloc!.searchController.stream,
-        builder: (context,snapshot){
-          return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context,index){
-                return _buildRow(snapshot.data![index]);
-              });
-        },
+    return Consumer<SearchBloc>(
+      builder:(context, bloc, child) => Container(
+        child: StreamBuilder<List<String>>(
+          initialData: [],
+          stream: bloc.searchController.stream,
+          builder: (context,snapshot){
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context,index){
+                  return _buildRow(snapshot.data![index]);
+                });
+          },
+        ),
       ),
     );
   }

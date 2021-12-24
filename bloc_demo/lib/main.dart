@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'module/search/search_bloc.dart';
 import 'module/search/search_view.dart';
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,10 @@ class MyApp extends StatelessWidget {
       ),
       home:Scaffold(
         appBar: AppBar(title: const Center(child: Text("Demo bloc", style: TextStyle(fontSize: 40),)),),
-        body:SearchView(),
+        body:Provider<SearchBloc>.value(
+            value: SearchBloc(),
+            child: SearchView(),
+        ),
       )
     );
   }
