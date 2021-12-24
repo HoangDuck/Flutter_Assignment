@@ -13,20 +13,32 @@ class DemoValueListenaleBuilder extends StatelessWidget {
       create: (context) => Counter(),
       child: Consumer<Counter>(
         builder: (context,counter,child) {
-          return ValueListenableBuilder(
-            valueListenable: counter.valueNotifier,
-            builder: (context, value,child) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    DemoConsumerWidget(),
-                    OtherWidget(),
-                  ],
-                ),
-              );
-            },
+          return ValueListenableProvider<int>.value(
+            value: counter.valueNotifier,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  DemoConsumerWidget(),
+                  OtherWidget(),
+                ],
+              ),
+            ),
           );
+          // return ValueListenableBuilder(
+          //   valueListenable: counter.valueNotifier,
+          //   builder: (context, value,child) {
+          //     return Center(
+          //       child: Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           DemoConsumerWidget(),
+          //           OtherWidget(),
+          //         ],
+          //       ),
+          //     );
+          //   },
+          // );
         }
       ),
     );
@@ -58,8 +70,9 @@ class OtherWidget extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
         onPressed: (){
-          final counter=Provider.of<Counter>(context);
+          Counter counter=Provider.of<Counter>(context, listen: false);
           counter.valueNotifier.value++;
+
         }
     );
   }

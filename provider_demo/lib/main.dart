@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Demo provider"),
         ),
-        body: const DemoStreamProvider(),
+        body: const DemoProxyProvider(),
       ),
     );
   }
