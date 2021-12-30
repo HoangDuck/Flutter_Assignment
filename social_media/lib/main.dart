@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter IGEKU',
+      title: 'Flutter GSOT',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("IGEKU",
+              Text("GSOT",
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -345,91 +345,242 @@ class _ListPostsState extends State<ListPosts> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-
       child: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          Container(
-            width: 60.0,
-            height: 60.0,
-            color: Colors.red,
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 65.0,
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 10,),
+                          SizedBox(
+                              height: 50,
+                              child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                          ),
+                          const SizedBox(width: 10,),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: const [
+                                Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                Text("@duckute", style: TextStyle(fontSize: 15),)
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 150,),
+                          const Icon(Icons.more_vert)
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
+                          "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
+                    ),
+                    Container(
+                      height: 50.0,
+                      color: Colors.lightBlueAccent,
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 15,),
+                          Icon(Icons.chat_bubble_outlined),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.favorite),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 220,),
+                          Icon(Icons.bookmark),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,)
+            ],
           ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.blue,
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 65.0,
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 10,),
+                          SizedBox(
+                              height: 50,
+                              child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                          ),
+                          const SizedBox(width: 10,),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: const [
+                                Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                Text("@duckute", style: TextStyle(fontSize: 15),)
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 150,),
+                          const Icon(Icons.more_vert)
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
+                          "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
+                    ),
+                    Container(
+                      height: 50.0,
+                      color: Colors.lightBlueAccent,
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 15,),
+                          Icon(Icons.chat_bubble_outlined),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.favorite),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 220,),
+                          Icon(Icons.bookmark),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,)
+            ],
           ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.green,
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 65.0,
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 10,),
+                          SizedBox(
+                              height: 50,
+                              child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                          ),
+                          const SizedBox(width: 10,),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: const [
+                                Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                Text("@duckute", style: TextStyle(fontSize: 15),)
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 150,),
+                          const Icon(Icons.more_vert)
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
+                          "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
+                    ),
+                    Container(
+                      height: 50.0,
+                      color: Colors.lightBlueAccent,
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 15,),
+                          Icon(Icons.chat_bubble_outlined),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.favorite),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 220,),
+                          Icon(Icons.bookmark),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,)
+            ],
           ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.yellow,
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 65.0,
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 10,),
+                          SizedBox(
+                              height: 50,
+                              child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                          ),
+                          const SizedBox(width: 10,),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: const [
+                                Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                Text("@duckute", style: TextStyle(fontSize: 15),)
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 150,),
+                          const Icon(Icons.more_vert)
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
+                          "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
+                    ),
+                    Container(
+                      height: 50.0,
+                      color: Colors.lightBlueAccent,
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 15,),
+                          Icon(Icons.chat_bubble_outlined),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.favorite),
+                          Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          SizedBox(width: 220,),
+                          Icon(Icons.bookmark),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,)
+            ],
           ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.orange,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.red,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.green,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.orange,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.red,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.green,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.orange,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.red,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.green,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 60.0,height: 60.0,
-            color: Colors.orange,
-          ),
+
         ],
       ),
     );
