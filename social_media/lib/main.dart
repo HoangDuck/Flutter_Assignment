@@ -191,6 +191,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -227,6 +228,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -263,6 +265,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -299,6 +302,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -335,6 +339,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -371,6 +376,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -407,6 +413,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
@@ -443,6 +450,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.blue,
