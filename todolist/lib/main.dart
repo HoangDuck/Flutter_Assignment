@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(title: const Center(child: Text("To do list",style: TextStyle(fontSize: 20),))),
           body: Provider<TodoBloc>.value(
               value: TodoBloc(),
-              child: TodoListContainer()),
+              child: const TodoListContainer()),
       ),
     );
   }
