@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,11 +19,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: HomePage(),
+        body: const HomePage(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          child: Container(
+          shape: const CircularNotchedRectangle(),
+          child: SizedBox(
             height: 75,
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -28,35 +31,35 @@ class MyApp extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   iconSize: 30.0,
-                  padding: EdgeInsets.only(left: 9.0),
+                  padding: const EdgeInsets.only(left: 9.0),
                   icon: const Icon(Icons.home),
                   onPressed: () {
                   },
                 ),
                 IconButton(
                   iconSize: 30.0,
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   icon: const Icon(Icons.chat),
                   onPressed: () {
                   },
                 ),
                 IconButton(
                   iconSize: 30.0,
-                  padding: EdgeInsets.only(left: 14.0),
+                  padding: const EdgeInsets.only(left: 14.0),
                   icon: const Icon(Icons.my_library_add_rounded),
                   onPressed: () {
                   },
                 ),
                 IconButton(
                   iconSize: 30.0,
-                  padding: EdgeInsets.only(left: 14.0),
+                  padding: const EdgeInsets.only(left: 14.0),
                   icon: const Icon(Icons.notifications),
                   onPressed: () {
                   }
                 ),
                 IconButton(
                   iconSize: 30.0,
-                  padding: EdgeInsets.only(right: 10.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   icon: const Icon(Icons.account_circle_outlined),
                   onPressed: () {
                   },
@@ -93,23 +96,33 @@ class HomePage extends StatelessWidget {
                         Color(0xff002fff),
                         Color(0xff00f4ff),
                       ],
-                    ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 100.0))
+                    ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0))
                 ),
               ),
-              RaisedButton.icon(onPressed: (){
-
-              },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  color: Colors.white,
-                  icon: const Icon(Icons.search),
-                  label: const Text("")),
+              SizedBox(
+                  width: 35,
+                  height: 35,
+                  child: Ink(
+                    decoration: const ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                    child: IconButton(
+                      color: Colors.black,
+                      icon: const Icon(Icons.search),
+                      onPressed: () {
+                      },
+                    ),
+                  ),
+                ),
 
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ListAvatar(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ListPosts(),
         ],
       ),
@@ -128,94 +141,192 @@ class _ListAvatarState extends State<ListAvatar> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
         constraints: const BoxConstraints(
-          minHeight: 70.0,
-          maxHeight: 70.0,
+          maxHeight: 90.0,
         ),
         child: ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           children: <Widget>[
-            Container(
-              width: 70.0,
+            SizedBox(
+              width: 80.0,
               height: 70.0,
-              color: Colors.red,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 2
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 65,
+                      height: 65,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        child:IconButton(
+                              color: Colors.grey,
+                              icon: const Icon(Icons.add),
+                              onPressed: () {
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                  const Text("You",style: TextStyle(fontSize: 18),)
+                ],
+              ),
             ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.blue,
+            //1
+            SizedBox(
+              width: 80.0,
+              height: 70.0,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                          color: Colors.blue,
+                          width: 2
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 65,
+                      height: 65,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        child:IconButton(
+                          color: Colors.grey,
+                          icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                          onPressed: () {
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text("Duc",style: TextStyle(fontSize: 18),)
+                ],
+              ),
             ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.green,
+            //2
+            SizedBox(
+              width: 80.0,
+              height: 70.0,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                          color: Colors.blue,
+                          width: 2
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 65,
+                      height: 65,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        child:IconButton(
+                          color: Colors.grey,
+                          icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                          onPressed: () {
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text("Minh",style: TextStyle(fontSize: 18),)
+                ],
+              ),
             ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.yellow,
+            //3
+            SizedBox(
+              width: 80.0,
+              height: 70.0,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                          color: Colors.blue,
+                          width: 2
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 65,
+                      height: 65,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        child:IconButton(
+                          color: Colors.grey,
+                          icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                          onPressed: () {
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text("An",style: TextStyle(fontSize: 18),)
+                ],
+              ),
             ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.orange,
+            //4
+            SizedBox(
+              width: 80.0,
+              height: 70.0,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                          color: Colors.blue,
+                          width: 2
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 65,
+                      height: 65,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        child:IconButton(
+                          color: Colors.grey,
+                          icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                          onPressed: () {
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text("Dai",style: TextStyle(fontSize: 18),)
+                ],
+              ),
             ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.red,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.blue,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.green,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.yellow,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.orange,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.red,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.blue,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.green,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.yellow,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.orange,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.red,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.blue,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.green,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.yellow,
-            ),
-            Container(
-              width: 70.0,height: 70.0,
-              color: Colors.orange,
-            ),
+
           ],
         ),
       );
