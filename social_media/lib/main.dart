@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+//import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: const HomePage(),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             shape: const CircularNotchedRectangle(),
             child: SizedBox(
@@ -31,35 +30,30 @@ class MyApp extends StatelessWidget {
                 children: <Widget>[
                   IconButton(
                     iconSize: 30.0,
-                    padding: const EdgeInsets.only(left: 9.0),
                     icon: const Icon(Icons.home),
                     onPressed: () {
                     },
                   ),
                   IconButton(
                     iconSize: 30.0,
-                    padding: const EdgeInsets.only(left: 10.0),
                     icon: const Icon(Icons.chat),
                     onPressed: () {
                     },
                   ),
                   IconButton(
                     iconSize: 30.0,
-                    padding: const EdgeInsets.only(left: 14.0),
                     icon: const Icon(Icons.my_library_add_rounded),
                     onPressed: () {
                     },
                   ),
                   IconButton(
                     iconSize: 30.0,
-                    padding: const EdgeInsets.only(left: 14.0),
                     icon: const Icon(Icons.notifications),
                     onPressed: () {
                     }
                   ),
                   IconButton(
                     iconSize: 30.0,
-                    padding: const EdgeInsets.only(right: 10.0),
                     icon: const Icon(Icons.account_circle_outlined),
                     onPressed: () {
                     },
@@ -70,7 +64,6 @@ class MyApp extends StatelessWidget {
           )
         ),
       ),
-
     );
   }
 }
