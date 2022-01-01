@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/chat.dart';
+import 'package:social_media/notificationpage.dart';
 import 'package:social_media/popupadd.dart';
 
 import 'homepage.dart';
@@ -100,20 +101,15 @@ class _PagesState extends State<Pages> {
               padding: const EdgeInsets.all(10),
               child: const ChatPage(),
           ),
-          Center(
-            child: Container(
-              child: const Text('Empty Body 2'),
-            ),
+          const Center(
+            child: Text('Empty Body 2'),
           ),
-          Center(
-            child: Container(
-              child: const Text('Empty Body 3'),
-            ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: const NotificationPage(),
           ),
-          Center(
-            child: Container(
-              child: const Text('Empty Body 4'),
-            ),
+          const Center(
+            child: Text('Empty Body 4'),
           )
         ],
         physics: const NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
