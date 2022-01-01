@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/chat.dart';
+import 'package:social_media/popupadd.dart';
 
 import 'homepage.dart';
 
@@ -65,7 +66,7 @@ class _PagesState extends State<Pages> {
                 icon: const Icon(Icons.my_library_add_rounded),
                 onPressed: () {
                   setState(() {
-                    _myPage.jumpToPage(2);
+                    PopupAdd(context);
                   });
                 },
               ),
