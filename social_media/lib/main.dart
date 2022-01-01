@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/chat.dart';
 
-import 'HomePage.dart';
+import 'homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Pages()
+      home: const SafeArea(child: Pages())
     );
   }
 }
@@ -94,10 +95,9 @@ class _PagesState extends State<Pages> {
         controller: _myPage,
         children: <Widget>[
           const HomePage(),
-          Center(
-            child: Container(
-              child: const Text('Empty Body 1'),
-            ),
+          Container(
+              padding: const EdgeInsets.all(10),
+              child: const ChatPage(),
           ),
           Center(
             child: Container(
