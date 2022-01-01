@@ -86,8 +86,8 @@ class _ListAvatarState extends State<ListAvatar> {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           SizedBox(
-            width: 80.0,
-            height: 70.0,
+            width: 70.0,
+            height: 60.0,
             child: Column(
               children: [
                 Container(
@@ -99,8 +99,8 @@ class _ListAvatarState extends State<ListAvatar> {
                     ),
                   ),
                   child: SizedBox(
-                    width: 65,
-                    height: 65,
+                    width: 55,
+                    height: 55,
                     child: Ink(
                       decoration: const ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -122,8 +122,8 @@ class _ListAvatarState extends State<ListAvatar> {
           ),
           //1
           SizedBox(
-            width: 80.0,
-            height: 70.0,
+            width: 70.0,
+            height: 60.0,
             child: Column(
               children: [
                 Container(
@@ -136,8 +136,8 @@ class _ListAvatarState extends State<ListAvatar> {
                     ),
                   ),
                   child: SizedBox(
-                    width: 65,
-                    height: 65,
+                    width: 55,
+                    height: 55,
                     child: Ink(
                       decoration: const ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -160,7 +160,6 @@ class _ListAvatarState extends State<ListAvatar> {
         ],
       ),
     );
-
   }
 }
 

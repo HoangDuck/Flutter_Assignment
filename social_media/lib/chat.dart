@@ -62,7 +62,6 @@ class _ChatPageState extends State<ChatPage> {
           ),
           const SizedBox(height: 10),
           const QuickChat(),
-          const SizedBox(height: 10),
           const Expanded(child: Messages()),
         ],
       ),
@@ -84,7 +83,7 @@ class _MessagesState extends State<Messages> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text("Messages",
-          style: TextStyle(fontSize: 25,
+          style: TextStyle(fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black87),
         ),
@@ -109,7 +108,7 @@ class _ListMessagesState extends State<ListMessages> {
         scrollDirection: Axis.vertical,
         children:[
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             child: Container(
               decoration: const ShapeDecoration(
                   color: Colors.white,
@@ -154,6 +153,7 @@ class _ListMessagesState extends State<ListMessages> {
               ),
             ),
           ),
+
         ],
       ),
     );
@@ -174,7 +174,13 @@ class _QuickChatState extends State<QuickChat> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        Text("Quick Chat", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black87),),
+        Text("Quick Chat",
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+          ),
+        ),
         SizedBox(height: 10),
         ListAvatarOnline(),
       ],
@@ -201,8 +207,8 @@ class _ListAvatarOnlineState extends State<ListAvatarOnline> {
         children: <Widget>[
           //1
           SizedBox(
-            width: 80.0,
-            height: 70.0,
+            width: 70.0,
+            height: 60.0,
             child: Column(
               children: [
                 Container(
@@ -215,8 +221,8 @@ class _ListAvatarOnlineState extends State<ListAvatarOnline> {
                     ),
                   ),
                   child: SizedBox(
-                    width: 65,
-                    height: 65,
+                    width: 55,
+                    height: 55,
                     child: Ink(
                       decoration: const ShapeDecoration(
                         shape: RoundedRectangleBorder(
