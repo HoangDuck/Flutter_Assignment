@@ -33,170 +33,162 @@ PopupAdd(context){
                     ),
                     const SizedBox(height: 20,),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: SizedBox(
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color(0xff9796F0),
-                                        Color(0xffFBC7D4),
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.circular(25),
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        width: 2
-                                    ),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xff9796F0),
+                                      Color(0xffFBC7D4),
+                                    ],
                                   ),
-                                  child: SizedBox(
-                                    width: 80,
-                                    height: 95,
-                                    child: Ink(
-                                      decoration: const ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        ),
-                                      ),
-                                      child:Column(
-                                        children: [
-                                          IconButton(
-                                            color: Colors.white,
-                                            icon: const Icon(Icons.image_outlined),
-                                            onPressed: () {
-                                            },
-                                          ),
-                                          const Text(
-                                            "Photo",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                  borderRadius: BorderRadius.circular(25),
+                                  border: Border.all(
+                                      color: Colors.white,
+                                      width: 2
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding:const EdgeInsets.all(5),
-                          child: SizedBox(
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color(0xff9796F0),
-                                        Color(0xffFBC7D4),
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.circular(25),
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        width: 2
-                                    ),
-                                  ),
-                                  child: SizedBox(
-                                    width: 80,
-                                    height: 95,
-                                    child: Ink(
-                                      decoration: const ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        ),
+                                child: SizedBox(
+                                  width: 65,
+                                  height: 80,
+                                  child: Ink(
+                                    decoration: const ShapeDecoration(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
                                       ),
-                                      child:Column(
-                                        children: [
-                                          IconButton(
-                                            color: Colors.white,
-                                            icon: const Icon(Icons.sms_outlined),
-                                            onPressed: () {
-                                            },
-                                          ),
-                                          const Text(
-                                            "Status",
-                                            style: TextStyle(
+                                    ),
+                                    child:Column(
+                                      children: [
+                                        IconButton(
+                                          color: Colors.white,
+                                          icon: const Icon(Icons.image_outlined),
+                                          onPressed: () {
+                                          },
+                                        ),
+                                        const Text(
+                                          "Photo",
+                                          style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
-                                            ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: SizedBox(
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color(0xff9796F0),
-                                        Color(0xffFBC7D4),
+                                        ),
                                       ],
                                     ),
-                                    borderRadius: BorderRadius.circular(25),
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        width: 2
-                                    ),
                                   ),
-                                  child: SizedBox(
-                                    width: 80,
-                                    height: 95,
-                                    child: Ink(
-                                      decoration: const ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xff9796F0),
+                                      Color(0xffFBC7D4),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(25),
+                                  border: Border.all(
+                                      color: Colors.white,
+                                      width: 2
+                                  ),
+                                ),
+                                child: SizedBox(
+                                  width: 65,
+                                  height: 80,
+                                  child: Ink(
+                                    decoration: const ShapeDecoration(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                    ),
+                                    child:Column(
+                                      children: [
+                                        IconButton(
+                                          color: Colors.white,
+                                          icon: const Icon(Icons.sms_outlined),
+                                          onPressed: () {
+                                          },
                                         ),
-                                      ),
-                                      child:Column(
-                                        children: [
-                                          IconButton(
+                                        const Text(
+                                          "Status",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
                                             color: Colors.white,
-                                            icon: const Icon(Icons.slideshow),
-                                            onPressed: () {
-                                            },
                                           ),
-                                          const Text(
-                                            "Video",
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xff9796F0),
+                                      Color(0xffFBC7D4),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(25),
+                                  border: Border.all(
+                                      color: Colors.white,
+                                      width: 2
+                                  ),
+                                ),
+                                child: SizedBox(
+                                  width: 65,
+                                  height: 80,
+                                  child: Ink(
+                                    decoration: const ShapeDecoration(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                    ),
+                                    child:Column(
+                                      children: [
+                                        IconButton(
+                                          color: Colors.white,
+                                          icon: const Icon(Icons.slideshow),
+                                          onPressed: () {
+                                          },
+                                        ),
+                                        const Text(
+                                          "Video",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
