@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -52,13 +53,16 @@ class _ChatPageState extends State<ChatPage> {
               ),
             ],
           ),
-          TextFormField(
-            //controller: txtToDoController,
-            decoration: const InputDecoration(
-              icon: Icon(Icons.search),
-              labelText: "Search chat here..",
-              hintText: "Search chat here..",
-            ),
+          const SizedBox(height: 10),
+          const TextField(
+              //controller: username,
+              decoration: InputDecoration(
+                labelText: "Search chat here..",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder( //Outline border type for TextFeild
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+              )
           ),
           const SizedBox(height: 10),
           const QuickChat(),
@@ -118,8 +122,8 @@ class _ListMessagesState extends State<ListMessages> {
                   shadows: [
                     BoxShadow(
                       color: Colors.black12,
-                      spreadRadius: 0.0,
-                      blurRadius: 20,
+                      spreadRadius: -9,
+                      blurRadius: 15,
                     ),
                   ]
               ),
@@ -141,9 +145,45 @@ class _ListMessagesState extends State<ListMessages> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                              Text("@duckute", style: TextStyle(fontSize: 15),)
+                              Text("Hoàng Đức", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                              SizedBox(height: 5,),
+                              Text("Hello", style: TextStyle(fontSize: 15),)
                             ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                const Text("Just now", style: TextStyle(fontSize: 13, color: Colors.grey),),
+                                Container(
+                                  width: 28,
+                                  height: 28,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.purple, // border color
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2), // border width
+                                    child: Container( // or ClipRRect if you need to clip the content
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.purple, // inner circle color
+                                      ),
+                                      child: const Center(
+                                          child: Text(
+                                            "2",
+                                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                                          ),
+                                      ), // inner content
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -153,7 +193,6 @@ class _ListMessagesState extends State<ListMessages> {
               ),
             ),
           ),
-
         ],
       ),
     );
@@ -199,7 +238,7 @@ class _ListAvatarOnlineState extends State<ListAvatarOnline> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxHeight: 90.0,
+        maxHeight: 85.0,
       ),
       child: ListView(
         shrinkWrap: true,
