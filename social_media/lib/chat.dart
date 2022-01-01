@@ -31,9 +31,16 @@ class _ChatPageState extends State<ChatPage> {
                 child: Ink(
                   decoration: const ShapeDecoration(
                     color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      shadows: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 0.0,
+                          blurRadius: 20,
+                        ),
+                      ]
                   ),
                   child: IconButton(
                     color: Colors.black,
@@ -140,47 +147,7 @@ class _ListMessagesState extends State<ListMessages> {
                             ],
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.centerRight,
-                            child: const Icon(Icons.more_vert),
-                          ),
-                        ),
-                        const SizedBox(width: 10,)
                       ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
-                        "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
-                  ),
-                  Container(
-                    decoration: const ShapeDecoration(
-                      color: Colors.lightBlueAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 50.0,
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 15,),
-                          const Icon(Icons.chat_bubble_outlined),
-                          const Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                          const SizedBox(width: 15,),
-                          const Icon(Icons.favorite),
-                          const Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.centerRight,
-                              child: const Icon(Icons.bookmark),
-                            ),
-                          ),
-                          const SizedBox(width: 10,)
-                        ],
-                      ),
                     ),
                   ),
                 ],

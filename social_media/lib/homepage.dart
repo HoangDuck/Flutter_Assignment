@@ -36,9 +36,16 @@ class HomePage extends StatelessWidget {
                   child: Ink(
                     decoration: const ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 0.0,
+                            blurRadius: 20,
+                          ),
+                        ]
                     ),
                     child: IconButton(
                       color: Colors.black,
