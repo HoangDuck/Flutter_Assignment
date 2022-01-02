@@ -85,19 +85,20 @@ class _ListAvatarState extends State<ListAvatar> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxHeight: 90.0,
+        maxHeight: 91.0,
       ),
       child: _buildSuggestions(),
     );
   }
   Widget _buildSuggestions(){
     DataConvert dataConvert=Provider.of<DataConvert>(context);
+    //int sizeOfAvatars=dataConvert.listUsers.length;
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.all(16.0),
       itemBuilder: (context,i){
         if(i==0) return _AddingWidget();
+
         return _buildRow(dataConvert.listUsers[i]);
       },
     );
@@ -134,7 +135,7 @@ class _ListAvatarState extends State<ListAvatar> {
                 ),
               ),
             ),
-            const Text("You",style: TextStyle(fontSize: 18),)
+            const Text("You",style: TextStyle(fontSize: 14),)
           ],
         ),
     );
@@ -172,7 +173,14 @@ class _ListAvatarState extends State<ListAvatar> {
                 ),
               ),
             ),
-            Text(data.name.toString(),style: const TextStyle(fontSize: 18),)
+            SizedBox(
+              width: 50,
+                child: Text(
+                  data.name.toString(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 14),
+                ),
+            )
           ],
         ),
     );
@@ -217,6 +225,8 @@ class _ListPostsState extends State<ListPosts> {
               ]
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 65.0,
@@ -224,7 +234,8 @@ class _ListPostsState extends State<ListPosts> {
                   children: [
                     const SizedBox(width: 10,),
                     SizedBox(
-                        height: 50,
+                        height: 55,
+                        width: 55,
                         child: Image.network(data.image.toString())
                     ),
                     const SizedBox(width: 10,),
