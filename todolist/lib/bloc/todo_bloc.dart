@@ -8,8 +8,8 @@ import 'package:todolist/event/delete_todo_event.dart';
 import 'package:todolist/model/todo.dart';
 
 class TodoBloc extends BaseBloc{
-  TodoTable _todoTable=TodoTable();
-  StreamController<List<Todo>>_todoListStreamController=
+  final TodoTable _todoTable=TodoTable();
+  final StreamController<List<Todo>>_todoListStreamController=
       StreamController<List<Todo>>();
   Stream<List<Todo>> get todoListStream => _todoListStreamController.stream;
   var randomInt=Random();
@@ -17,7 +17,7 @@ class TodoBloc extends BaseBloc{
 
   initData() async {
     _todoListData=await _todoTable.selectAllTodo();
-    if(_todoListData==null){
+    if(_todoListData == null){
       return;
     }
     _todoListStreamController.sink.add(_todoListData);

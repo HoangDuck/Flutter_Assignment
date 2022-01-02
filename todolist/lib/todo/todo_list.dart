@@ -35,7 +35,6 @@ class _TodoListState extends State<TodoList> {
                     trailing: GestureDetector(
                       onTap: (){
                         bloc.event.add(DeleteTodoEvent(snapshot.data![index]));
-
                       },
                       child: const Icon(
                         Icons.delete,
@@ -46,40 +45,23 @@ class _TodoListState extends State<TodoList> {
                 },
               );
             case ConnectionState.waiting:
-              return Center(
-                child: Container(
+              return const Center(
+                child: SizedBox(
                   width: 70,
                   height: 70,
-                  child: const Text("Empty",style:TextStyle(fontSize: 20)),
+                  child: Text("Empty",style:TextStyle(fontSize: 20)),
                 ),
               );
             case ConnectionState.none:
             default:
-              return Center(
-                child: Container(
+              return const Center(
+                child: SizedBox(
                   width: 70,
                   height: 70,
-                  child: const CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 ),
               );
           }
-          // return ListView.builder(
-          //   itemCount: 30,
-          //   itemBuilder: (context,index){
-          //     return ListTile(
-          //       title: Text("To do $index",style: const TextStyle(fontSize: 20),),
-          //       trailing: GestureDetector(
-          //         onTap: (){
-          //           print("delete");
-          //         },
-          //         child: const Icon(
-          //           Icons.delete,
-          //           color: Color(0xFFEF5350),
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // );
         },
       ),
     );

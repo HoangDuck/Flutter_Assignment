@@ -24,7 +24,6 @@ class Todo{
     return {
       'id':_id,
       'content':_content,
-
     };
   }
 }
