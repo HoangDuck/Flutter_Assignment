@@ -81,83 +81,94 @@ class _ListAvatarState extends State<ListAvatar> {
       constraints: const BoxConstraints(
         maxHeight: 90.0,
       ),
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          SizedBox(
-            width: 70.0,
-            height: 60.0,
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                        color: Colors.grey,
-                        width: 2
-                    ),
-                  ),
-                  child: SizedBox(
-                    width: 55,
-                    height: 55,
-                    child: Ink(
-                      decoration: const ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      child:IconButton(
-                        color: Colors.grey,
-                        icon: const Icon(Icons.add),
-                        onPressed: () {
-                        },
-                      ),
-                    ),
+      child: _buildSuggestions(),
+    );
+  }
+  Widget _buildSuggestions(){
+    return ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context,i){
+        if(i==0) return _AddingWidget();
+        return _buildRow("data");
+      },
+    );
+  }
+  Widget _AddingWidget(){
+    return SizedBox(
+      width: 70.0,
+      height: 60.0,
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(
+                  color: Colors.grey,
+                  width: 2
+              ),
+            ),
+            child: SizedBox(
+              width: 55,
+              height: 55,
+              child: Ink(
+                decoration: const ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                 ),
-                const Text("You",style: TextStyle(fontSize: 18),)
-              ],
-            ),
-          ),
-          //1
-          SizedBox(
-            width: 70.0,
-            height: 60.0,
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                        color: Colors.blue,
-                        width: 2
-                    ),
-                  ),
-                  child: SizedBox(
-                    width: 55,
-                    height: 55,
-                    child: Ink(
-                      decoration: const ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      child:IconButton(
-                        color: Colors.grey,
-                        icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
-                        onPressed: () {
-                        },
-                      ),
-                    ),
-                  ),
+                child:IconButton(
+                  color: Colors.grey,
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    },
                 ),
-                const Text("Duc",style: TextStyle(fontSize: 18),)
-              ],
+              ),
             ),
           ),
+          const Text("You",style: TextStyle(fontSize: 18),)
         ],
+      ),
+    );
+  }
+  Widget _buildRow(String data) {
+    return ListTile(
+      title: SizedBox(
+        width: 70.0,
+        height: 60.0,
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(
+                    color: Colors.blue,
+                    width: 2
+                ),
+              ),
+              child: SizedBox(
+                width: 55,
+                height: 55,
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                  ),
+                  child:IconButton(
+                    color: Colors.grey,
+                    icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                    onPressed: () {
+                      },
+                  ),
+                ),
+              ),
+            ),
+            const Text("Duc",style: TextStyle(fontSize: 18),)
+          ],
+        ),
       ),
     );
   }
