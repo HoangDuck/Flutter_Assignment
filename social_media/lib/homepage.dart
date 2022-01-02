@@ -5,6 +5,8 @@ import 'package:social_media/dto/data_converter.dart';
 import 'package:social_media/model/posts.dart';
 import 'package:social_media/model/user.dart';
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     DataConvert dataConvert=Provider.of<DataConvert>(context);
@@ -63,9 +65,9 @@ class HomePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          ListAvatar(),
+          const ListAvatar(),
           const SizedBox(height: 10),
-          ListPosts(),
+          const ListPosts(),
         ],
       ),
     );
@@ -102,44 +104,43 @@ class _ListAvatarState extends State<ListAvatar> {
   }
   Widget _AddingWidget(){
     return SizedBox(
-      width: 70.0,
-      height: 60.0,
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              border: Border.all(
-                  color: Colors.grey,
-                  width: 2
+        width: 70.0,
+        height: 60.0,
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(
+                    color: Colors.grey,
+                    width: 2
+                ),
               ),
-            ),
-            child: SizedBox(
-              width: 55,
-              height: 55,
-              child: Ink(
-                decoration: const ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+              child: SizedBox(
+                width: 55,
+                height: 55,
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                  ),
+                  child:IconButton(
+                    color: Colors.grey,
+                    icon: const Icon(Icons.add),
+                    onPressed: () {
+                      },
                   ),
                 ),
-                child:IconButton(
-                  color: Colors.grey,
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    },
-                ),
               ),
             ),
-          ),
-          const Text("You",style: TextStyle(fontSize: 18),)
-        ],
-      ),
+            const Text("You",style: TextStyle(fontSize: 18),)
+          ],
+        ),
     );
   }
   Widget _buildRow(User data) {
-    return ListTile(
-      title: SizedBox(
+    return SizedBox(
         width: 70.0,
         height: 60.0,
         child: Column(
@@ -164,17 +165,16 @@ class _ListAvatarState extends State<ListAvatar> {
                   ),
                   child:IconButton(
                     color: Colors.grey,
-                    icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                    icon: Image.network(data.picture.toString()),
                     onPressed: () {
                       },
                   ),
                 ),
               ),
             ),
-            const Text("Duc",style: TextStyle(fontSize: 18),)
+            Text(data.name.toString(),style: const TextStyle(fontSize: 18),)
           ],
         ),
-      ),
     );
   }
 }
@@ -200,8 +200,7 @@ class _ListPostsState extends State<ListPosts> {
     );
   }
   Widget _buildRow(Post data) {
-    return ListTile(
-      title: Container(
+    return Container(
         padding: const EdgeInsets.all(10),
         child: Container(
           decoration: const ShapeDecoration(
@@ -226,7 +225,7 @@ class _ListPostsState extends State<ListPosts> {
                     const SizedBox(width: 10,),
                     SizedBox(
                         height: 50,
-                        child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                        child: Image.network(data.image.toString())
                     ),
                     const SizedBox(width: 10,),
                     Container(
@@ -234,9 +233,9 @@ class _ListPostsState extends State<ListPosts> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("Hoàng Đức", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                          Text("@duckute", style: TextStyle(fontSize: 15),)
+                        children: [
+                          Text(data.user!.name.toString(), style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          Text(data.user!.nickname.toString(), style: const TextStyle(fontSize: 15),)
                         ],
                       ),
                     ),
@@ -252,8 +251,7 @@ class _ListPostsState extends State<ListPosts> {
               ),
               Container(
                 padding: const EdgeInsets.all(15),
-                child: const Text("Xin chào. Tôi là Đức. Đây chính là bài post "
-                    "đầu tiên trong app mạng xã hội IGEKU.",style: TextStyle(fontSize: 20, color: Colors.black54),),
+                child: Text(data.content.toString(),style: const TextStyle(fontSize: 20, color: Colors.black54),),
               ),
               Container(
                 decoration: const ShapeDecoration(
@@ -268,10 +266,10 @@ class _ListPostsState extends State<ListPosts> {
                     children: [
                       const SizedBox(width: 15,),
                       const Icon(Icons.chat_bubble_outlined),
-                      const Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      Text(data.numberComments.toString(),style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                       const SizedBox(width: 15,),
                       const Icon(Icons.favorite),
-                      const Text("12",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      Text(data.numberLikes.toString(),style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                       Expanded(
                         child: Container(
                           alignment: Alignment.centerRight,
@@ -286,7 +284,6 @@ class _ListPostsState extends State<ListPosts> {
             ],
           ),
         ),
-      ),
     );
   }
 }

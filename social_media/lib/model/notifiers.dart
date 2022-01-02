@@ -5,7 +5,7 @@ class Notifier{
   User? user;
   String? content;
   String? time;
-  bool? read;
+  String? read;
 
   Notifier({this.id, this.user, this.content, this.time, this.read});
 
