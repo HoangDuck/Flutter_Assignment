@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/chat.dart';
+import 'package:social_media/model/messages.dart';
+import 'package:social_media/model/posts.dart';
+import 'package:social_media/model/user.dart';
 import 'package:social_media/notificationpage.dart';
 import 'package:social_media/popupadd.dart';
 
