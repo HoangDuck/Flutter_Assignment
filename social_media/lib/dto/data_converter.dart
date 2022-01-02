@@ -9,9 +9,12 @@ final String listMessagesFromJsonString=messages;
 final String listUsersFromJsonString=users;
 final String listNotifiersFromJsonString=notifiers;
 class DataConvert{
-  static List<Message> listMessages=[];
-  static List<Post> listPosts=[];
-  static List<User> listUsers=[];
+  final List<Message> listMessages=[];
+  final List<Post> listPosts=[];
+  final List<User> listUsers=[];
+
+  DataConvert();
+
   initData(){
     //chuyển Json qua list của Posts
     Iterable l = jsonDecode(listPostsFromJsonString);

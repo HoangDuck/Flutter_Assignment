@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media/chat.dart';
+import 'package:social_media/dto/data_converter.dart';
 import 'package:social_media/model/messages.dart';
 import 'package:social_media/model/posts.dart';
 import 'package:social_media/model/user.dart';
@@ -23,7 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SafeArea(child: Pages())
+      home: SafeArea(
+          child: Provider<DataConvert>.value(
+            value: DataConvert(),
+            child: const Pages(),
+          ),
+      )
     );
   }
 }
@@ -99,7 +106,7 @@ class _PagesState extends State<Pages> {
       body: PageView(
         controller: _myPage,
         children: <Widget>[
-          const HomePage(),
+          HomePage(),
           Container(
               padding: const EdgeInsets.all(10),
               child: const ChatPage(),

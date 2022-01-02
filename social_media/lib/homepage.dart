@@ -1,10 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media/dto/data_converter.dart';
+import 'package:social_media/model/posts.dart';
+import 'package:social_media/model/user.dart';
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
+    dataConvert.initData();
     return Container(
       padding: const EdgeInsets.all(7),
       child: Column(
@@ -85,13 +89,14 @@ class _ListAvatarState extends State<ListAvatar> {
     );
   }
   Widget _buildSuggestions(){
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context,i){
         if(i==0) return _AddingWidget();
-        return _buildRow("data");
+        return _buildRow(dataConvert.listUsers[i]);
       },
     );
   }
@@ -132,7 +137,7 @@ class _ListAvatarState extends State<ListAvatar> {
       ),
     );
   }
-  Widget _buildRow(String data) {
+  Widget _buildRow(User data) {
     return ListTile(
       title: SizedBox(
         width: 70.0,
@@ -184,16 +189,17 @@ class ListPosts extends StatefulWidget {
 class _ListPostsState extends State<ListPosts> {
   @override
   Widget build(BuildContext context) {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         itemBuilder: (context,i){
-          return _buildRow("data");
+          return _buildRow(dataConvert.listPosts[i]);
         },
       ),
     );
   }
-  Widget _buildRow(String data) {
+  Widget _buildRow(Post data) {
     return ListTile(
       title: Container(
         padding: const EdgeInsets.all(10),
