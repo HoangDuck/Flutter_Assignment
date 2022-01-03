@@ -12,7 +12,7 @@ class DataConvert{
   final List<Message> listMessages=[];
   final List<Post> listPosts=[];
   final List<User> listUsers=[];
-
+  final List<Notifier> listNotifiers=[];
   DataConvert();
 
   initData(){
@@ -31,6 +31,6 @@ class DataConvert{
     //chuyển Json qua list của Notifiers
     l = jsonDecode(listNotifiersFromJsonString);
     List<Notifier> notifiers = List<Notifier>.from(l.map((model)=> Notifier.fromJson(model)));
-    listMessages.addAll(messages);
+    listNotifiers.addAll(notifiers);
   }
 }

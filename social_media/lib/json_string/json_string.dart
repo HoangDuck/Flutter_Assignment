@@ -220,6 +220,32 @@ const String messages='''
     "content": "Can you help me?",
     "time": "1d",
     "numbernew": 0
+  },
+  {
+    "id": 6,
+    "user":
+      {
+        "id":2,
+        "name":"Minh Thien",
+        "nickname": "@thienute",
+        "picture": "https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/banh-trang.jpg?alt=media&token=8ab88554-3ca5-494c-9662-af6bc7a988cd"
+      },
+    "content": "Hello. Good morning",
+    "time": "2d",
+    "numbernew": 0
+  },
+  {
+    "id": 7,
+    "user":
+      {
+        "id":4,
+        "name":"Duc Tinh",
+        "nickname": "@tinhute",
+        "picture": "https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/cach-lam-nem-nuong-lui-2.jpg?alt=media&token=17fb7222-dc5c-4681-bd57-c1a485edff7c"
+      },
+    "content": "Did you finish app?",
+    "time": "3d",
+    "numbernew": 0
   }
 ]
 ''';

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media/model/notifiers.dart';
+
+import 'dto/data_converter.dart';
 class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
 
@@ -71,23 +75,26 @@ class ListNotifications extends StatefulWidget {
 class _ListNotificationsState extends State<ListNotifications> {
   @override
   Widget build(BuildContext context) {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
     return Expanded(
         child: ListView.builder(
+          itemCount: dataConvert.listNotifiers.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context,i)
           {
+            Notifier notifier=dataConvert.listNotifiers[i];
             if(i==0){
               return _buildTitleNew();
+            }else{
+
             }
-            return _buildRow("Data");
+            return _buildRow(notifier);
           },
         ),
     );
   }
-  Widget _buildRow(String data) {
-    return ListTile(
-      title:
-      Container(
+  Widget _buildRow(Notifier data) {
+    return Container(
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: const ShapeDecoration(
@@ -106,13 +113,13 @@ class _ListNotificationsState extends State<ListNotifications> {
           child: Column(
             children: [
               SizedBox(
-                height: 65.0,
                 child: Row(
                   children: [
                     const SizedBox(width: 10,),
                     SizedBox(
+                        width: 50,
                         height: 50,
-                        child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                        child: Image.network(data.user!.picture.toString())
                     ),
                     const SizedBox(width: 10,),
                     Container(
@@ -120,10 +127,23 @@ class _ListNotificationsState extends State<ListNotifications> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("Hoàng Đức", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                          SizedBox(height: 5,),
-                          Text("Hello", style: TextStyle(fontSize: 15),)
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              // Note: Styles for TextSpans must be explicitly defined.
+                              // Child text spans will inherit styles from parent
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.black,
+                              ),
+                              children: [
+                                TextSpan(text: data.user!.name.toString()+" ", style: const TextStyle(fontWeight: FontWeight.bold)),
+                                TextSpan(text: data.content.toString()),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 5,),
+                          Text(data.time.toString(), style: const TextStyle(fontSize: 15),)
                         ],
                       ),
                     ),
@@ -133,11 +153,12 @@ class _ListNotificationsState extends State<ListNotifications> {
             ],
           ),
         ),
-      ),
     );
   }
   Widget _buildTitleNew(){
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         SizedBox(height: 15,),
         Text(
