@@ -1,6 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media/model/user.dart';
+
+import 'dto/data_converter.dart';
+import 'model/messages.dart';
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
@@ -59,7 +64,7 @@ class _ChatPageState extends State<ChatPage> {
               decoration: InputDecoration(
                 labelText: "Search chat here..",
                 prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder( //Outline border type for TextFeild
+                border: OutlineInputBorder( //Outline border type for TextField
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
               )
@@ -107,17 +112,17 @@ class ListMessages extends StatefulWidget {
 class _ListMessagesState extends State<ListMessages> {
   @override
   Widget build(BuildContext context) {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
     return Expanded(
       child: ListView.builder(
+        itemCount: dataConvert.listMessages.length,
         scrollDirection: Axis.vertical,
-        itemBuilder: (context,i) => _buildRow("data"),
+        itemBuilder: (context,i) => _buildRow(dataConvert.listMessages[i]),
       ),
     );
   }
-  Widget _buildRow(String data){
-    return ListTile(
-      title:
-      Container(
+  Widget _buildRow(Message data){
+    return Container(
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: const ShapeDecoration(
@@ -142,7 +147,8 @@ class _ListMessagesState extends State<ListMessages> {
                     const SizedBox(width: 10,),
                     SizedBox(
                         height: 50,
-                        child: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323")
+                        width: 50,
+                        child: Image.network(data.user!.picture.toString())
                     ),
                     const SizedBox(width: 10,),
                     Container(
@@ -150,10 +156,10 @@ class _ListMessagesState extends State<ListMessages> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("Hoàng Đức", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                          SizedBox(height: 5,),
-                          Text("Hello", style: TextStyle(fontSize: 15),)
+                        children: [
+                          Text(data.user!.name.toString(), style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                          const SizedBox(height: 5,),
+                          Text((data.content.toString()).substring(0,9)+"...", style: const TextStyle(fontSize: 15),)
                         ],
                       ),
                     ),
@@ -164,30 +170,8 @@ class _ListMessagesState extends State<ListMessages> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const Text("Just now", style: TextStyle(fontSize: 13, color: Colors.grey),),
-                            Container(
-                              width: 28,
-                              height: 28,
-                              decoration: const BoxDecoration(
-                                color: Colors.purple, // border color
-                                shape: BoxShape.circle,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(2), // border width
-                                child: Container( // or ClipRRect if you need to clip the content
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.purple, // inner circle color
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
-                                    ),
-                                  ), // inner content
-                                ),
-                              ),
-                            ),
+                            Text(data.time.toString(), style: const TextStyle(fontSize: 13, color: Colors.grey),),
+                            _numberOfNewMessages(data),
                           ],
                         ),
                       ),
@@ -197,6 +181,33 @@ class _ListMessagesState extends State<ListMessages> {
               ),
             ],
           ),
+        ),
+    );
+  }
+  Widget _numberOfNewMessages(Message data){
+    if(data.numberNew.toString() == "0"){
+      return Container();
+    }
+    return Container(
+      width: 28,
+      height: 28,
+      decoration: const BoxDecoration(
+        color: Colors.purple, // border color
+        shape: BoxShape.circle,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(2), // border width
+        child: Container( // or ClipRRect if you need to clip the content
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.purple, // inner circle color
+          ),
+          child: Center(
+            child: Text(
+              data.numberNew.toString(),
+              style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+            ),
+          ), // inner content
         ),
       ),
     );
@@ -240,20 +251,21 @@ class ListAvatarOnline extends StatefulWidget {
 class _ListAvatarOnlineState extends State<ListAvatarOnline> {
   @override
   Widget build(BuildContext context) {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxHeight: 85.0,
+        maxHeight: 91.0,
       ),
       child: ListView.builder(
+        itemCount: dataConvert.listUsers.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context,i) => _buildRow("data"),
+        itemBuilder: (context,i) => _buildRow(dataConvert.listUsers[i]),
       ),
     );
   }
-  Widget _buildRow(String data) {
-    return ListTile(
-      title: SizedBox(
+  Widget _buildRow(User data) {
+    return SizedBox(
         width: 70.0,
         height: 60.0,
         child: Column(
@@ -278,17 +290,23 @@ class _ListAvatarOnlineState extends State<ListAvatarOnline> {
                   ),
                   child:IconButton(
                     color: Colors.grey,
-                    icon: Image.network("https://firebasestorage.googleapis.com/v0/b/quickstart-1614695450393.appspot.com/o/download.jpg?alt=media&token=3072bf38-28e9-4574-bcd5-30eea8411323"),
+                    icon: Image.network(data.picture.toString()),
                     onPressed: () {
                       },
                   ),
                 ),
               ),
             ),
-            const Text("Duc",style: TextStyle(fontSize: 18),)
+            SizedBox(
+              width: 50,
+              child: Text(
+                data.name.toString(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 14),
+              ),
+            )
           ],
         ),
-      ),
     );
   }
 }
