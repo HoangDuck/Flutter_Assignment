@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/chat.dart';
 import 'package:social_media/dto/data_converter.dart';
-import 'package:social_media/model/messages.dart';
-import 'package:social_media/model/posts.dart';
-import 'package:social_media/model/user.dart';
+import 'package:social_media/dto/login_data_converter.dart';
+import 'package:social_media/model/user_login.dart';
 import 'package:social_media/notificationpage.dart';
 import 'package:social_media/popupadd.dart';
 
@@ -25,15 +24,134 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(
-          child: Provider<DataConvert>.value(
-            value: DataConvert(),
-            child: const Pages(),
-          ),
+      home: const SafeArea(
+          child: LoginPage(),
       )
     );
   }
 }
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider<LoginDataConverter>.value(
+        value: LoginDataConverter(),
+        child: const Material(child: LoginPageUI()),
+    );
+  }
+}
+class LoginPageUI extends StatelessWidget {
+  const LoginPageUI({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(100),
+            child: Text("GSOT",
+              style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()..shader = const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.topRight,
+                    colors: <Color>[
+                      Color(0xff002fff),
+                      Color(0xff00f4ff),
+                    ],
+                  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0))
+              ),
+            ),
+          ),
+          const TextField(
+            //controller: username,
+              decoration: InputDecoration(
+                labelText: "Username",
+                border: OutlineInputBorder( //Outline border type for TextField
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+              )
+          ),
+          const SizedBox(height: 30),
+          const TextField(
+            //controller: username,
+              decoration: InputDecoration(
+                labelText: "Password",
+                border: OutlineInputBorder( //Outline border type for TextField
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+              )
+          ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        side: const BorderSide(color: Colors.blue)
+                    )
+                )
+            ),
+            onPressed: () {
+              LoginDataConverter loginDataConvert=Provider.of<LoginDataConverter>(context);
+              UserLogin? userLogin=loginDataConvert.loginDataConverter;
+              String username=userLogin!.username.toString();
+              String password=userLogin!.password.toString();
+              if(username=="duckute" && password=="123456789"){
+                const PageAfterLogin();
+              }
+            },
+            child:
+              Container(
+                color: Colors.blue,
+                child: const Center(
+                  child: Text("Login",style: TextStyle(fontSize: 20,color: Colors.white),),
+                ),
+              ),
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        side: const BorderSide(color: Colors.blue)
+                    )
+                )
+            ),
+            onPressed: () {
+
+            },
+            child:
+          Container(
+            color: Colors.blue,
+            child: const Center(
+              child: Text("Register",style: TextStyle(fontSize: 20,color: Colors.white),),
+            ),
+          ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PageAfterLogin extends StatelessWidget {
+  const PageAfterLogin({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider<DataConvert>.value(
+      value: DataConvert(),
+      child: const Pages(),
+    );
+  }
+}
+
 class Pages extends StatefulWidget {
   const Pages({Key? key}) : super(key: key);
 
