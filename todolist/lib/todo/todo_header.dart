@@ -21,7 +21,6 @@ class TodoHeader extends StatelessWidget {
         ),
         const SizedBox(width: 20,),
         RaisedButton.icon(onPressed: (){
-          bloc.event.add(AddTodoEvent(txtToDoController.text));
         },
             icon: const Icon(Icons.add),
             label: const Text("Add")),

@@ -6,7 +6,7 @@ import 'package:social_media/dto/login_data_converter.dart';
 import 'package:social_media/model/user_login.dart';
 import 'package:social_media/notificationpage.dart';
 import 'package:social_media/popupadd.dart';
-
+import 'package:page_transition/page_transition.dart';
 import 'homepage.dart';
 
 void main() {
@@ -46,6 +46,10 @@ class LoginPageUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var txtToDoControllerUsername= TextEditingController();
+    var txtToDoControllerPassword= TextEditingController();
+    LoginDataConverter loginDataConvert=Provider.of<LoginDataConverter>(context);
+    loginDataConvert.initData();
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -67,9 +71,10 @@ class LoginPageUI extends StatelessWidget {
               ),
             ),
           ),
-          const TextField(
+          TextFormField(
+              controller: txtToDoControllerUsername,
             //controller: username,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Username",
                 border: OutlineInputBorder( //Outline border type for TextField
                   borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -77,14 +82,15 @@ class LoginPageUI extends StatelessWidget {
               )
           ),
           const SizedBox(height: 30),
-          const TextField(
-            //controller: username,
-              decoration: InputDecoration(
+          TextFormField(
+              controller: txtToDoControllerPassword,
+              decoration: const InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder( //Outline border type for TextField
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
-              )
+              ),
+              obscureText: true,
           ),
           const SizedBox(height: 30),
           ElevatedButton(
@@ -97,12 +103,17 @@ class LoginPageUI extends StatelessWidget {
                 )
             ),
             onPressed: () {
-              LoginDataConverter loginDataConvert=Provider.of<LoginDataConverter>(context);
-              UserLogin? userLogin=loginDataConvert.loginDataConverter;
-              String username=userLogin!.username.toString();
-              String password=userLogin!.password.toString();
-              if(username=="duckute" && password=="123456789"){
-                const PageAfterLogin();
+              try{
+                UserLogin userLogin=UserLogin();
+                userLogin=loginDataConvert.loginDataConverter;
+                var username=userLogin!.username.toString();
+                var password=userLogin!.password.toString();
+                if(username==txtToDoControllerUsername.text
+                    && password==txtToDoControllerPassword.text){
+                  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const PageAfterLogin()));
+                }
+              }catch(e){
+                print(e.toString());
               }
             },
             child:

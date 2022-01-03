@@ -5,11 +5,11 @@ import 'package:social_media/model/user_login.dart';
 
 final String loginData=login;
 class LoginDataConverter{
-  UserLogin? loginDataConverter;
+  late final UserLogin loginDataConverter;
   LoginDataConverter();
   initData(){
     Map<String, dynamic> map=jsonDecode(loginData);
-    UserLogin userLogin=UserLogin.fromJson(map);
+    var userLogin=UserLogin.fromJson(map);
     loginDataConverter=userLogin;
   }
 }
