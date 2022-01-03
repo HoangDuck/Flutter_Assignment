@@ -9,8 +9,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DataConvert dataConvert=Provider.of<DataConvert>(context);
-    dataConvert.initData();
     return Container(
       padding: const EdgeInsets.all(7),
       child: Column(

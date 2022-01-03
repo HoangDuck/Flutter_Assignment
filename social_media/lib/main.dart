@@ -43,6 +43,13 @@ class Pages extends StatefulWidget {
 
 class _PagesState extends State<Pages> {
   final PageController _myPage = PageController(initialPage: 0);
+
+  @override
+  void didChangeDependencies() {
+    DataConvert dataConvert=Provider.of<DataConvert>(context);
+    dataConvert.initData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +113,7 @@ class _PagesState extends State<Pages> {
       body: PageView(
         controller: _myPage,
         children: <Widget>[
-          HomePage(),
+          const HomePage(),
           Container(
               padding: const EdgeInsets.all(10),
               child: const ChatPage(),
