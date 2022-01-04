@@ -76,33 +76,77 @@ class HomePageStack extends StatelessWidget {
       child:Stack(
         //khi sử dụng stack thì sử dụng thêm widget positioned để định vị trí của widget con
         children: [
-          Positioned(
-              top:40,
-              left: 50,
-              child: Container(
-                width: 200,
-                height: 200,
-                color: Colors.blue,
-          )),
-          Positioned(
-              top:60,
-              left: 70,
-              child: Container(
-                width: 200,
-                height: 200,
-                color: Colors.red,
-              )),
-          Positioned(
-              top:80,
-              left: 90,
-              child: Container(
-                width: 200,
-                height: 200,
-                color: Colors.yellow,
-              )),
+          Container(
+            color: Colors.blue,
+          ),
+          const BasicStack()
         ],
       )
     );
   }
 }
+class BasicStack extends StatelessWidget {
+  const BasicStack({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(7),
+      color: Colors.transparent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Notifications",
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                width: 35,
+                height: 35,
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    color: Colors.black,
+                      shape: RoundedRectangleBorder(
+
+                        borderRadius: BorderRadius.all(Radius.circular(10),),
+                      ),
+                  ),
+                  child: IconButton(
+                    color: Colors.black,
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          TextData()
+        ],
+      ),
+    );
+  }
+}
+class TextData extends StatelessWidget {
+  const TextData({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        color: Colors.red,
+        child: Text("data"),
+      ),
+    );
+  }
+}
+
+
 
