@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:bloc_demo/module/search/search_bloc.dart';
 import 'package:provider/provider.dart';
 class SearchBox extends StatefulWidget {
+  const SearchBox({Key? key}) : super(key: key);
+
   @override
   _SearchBoxState createState() => _SearchBoxState();
 }

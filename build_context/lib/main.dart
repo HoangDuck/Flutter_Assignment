@@ -32,11 +32,13 @@ class DemoBuildContext extends StatelessWidget {
       body: OngBa(
         child: ChaMe(
           child: Column(
-          children: <Widget>[
+          children: const <Widget>[
               ConTrai(),
               ConGai(),
           ],
-      ),),),
+      ),
+        ),
+      ),
     );
   }
 }
@@ -69,21 +71,21 @@ class ChaMe extends StatelessWidget {
   }
 }
 class ConTrai extends StatelessWidget {
+  const ConTrai({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     ChaMe? chaMe=context.findAncestorWidgetOfExactType();
-    return Container(
-      child: Text(chaMe!.layTenConTrai(),style: const TextStyle(fontSize: 50),),
-    );
+    return Text(chaMe!.layTenConTrai(),style: const TextStyle(fontSize: 50),);
   }
 }
 class ConGai extends StatelessWidget {
+  const ConGai({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     ChaMe? chaMe=context.findAncestorWidgetOfExactType();
-    return Container(
-      child: Text(chaMe!.layTenConGai(),style: const TextStyle(fontSize: 50),),
-    );
+    return Text(chaMe!.layTenConGai(),style: const TextStyle(fontSize: 50),);
   }
 }
 

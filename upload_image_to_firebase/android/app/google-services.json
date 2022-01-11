@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "642376049449",
+    "project_id": "valiant-index-306802",
+    "storage_bucket": "valiant-index-306802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642376049449:android:6bd4bea1276202e6684d38",
+        "android_client_info": {
+          "package_name": "com.example.upload_image_to_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642376049449-095i41llt12kb25r0kft1h0n89sn9aqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.upload_image_to_firebase",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
+          "client_id": "642376049449-jj9lao9bhg4rp0atgt6233hccg6brt80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa_buFWJgKgwa0IdxCWr_I6sDUgVuEOfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642376049449-jj9lao9bhg4rp0atgt6233hccg6brt80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
