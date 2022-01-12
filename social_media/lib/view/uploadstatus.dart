@@ -1,7 +1,10 @@
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/converter/data_converter.dart';
 import 'package:social_media/model/user.dart';
+import 'package:image_picker/image_picker.dart';
 class UploadStatus extends StatefulWidget {
   const UploadStatus({Key? key}) : super(key: key);
   @override
@@ -9,7 +12,13 @@ class UploadStatus extends StatefulWidget {
 }
 
 class _UploadStatusState extends State<UploadStatus> {
+  final ImagePicker _picker = ImagePicker();
+  XFile? _imageFilePicker;
 
+  set _imageFile(XFile? value) {
+    _imageFilePicker = value;
+  }
+  // Pick an image
   @override
   Widget build(BuildContext context) {
     DataConvert dataConvert=Provider.of<DataConvert>(context);
@@ -98,14 +107,9 @@ class _UploadStatusState extends State<UploadStatus> {
               Expanded(
                 child: Container(
                   alignment: Alignment.topCenter,
-                  child: Image.network(
-                    "https://cdn.baogiaothong.vn/upload/images/2020-4/article_social_image/2020-12-15/noel-1608021530-width1200height630-auto-crop-1608021622-width1200height630-1608021625-width1200height630.jpg",
-                    errorBuilder: (context,error,stacktrace){
-                      return Container();
-                    },
+                  child: _previewImages(),
                   ),
                 ),
-              ),
               Divider(
                 color: Colors.black,
               ),
@@ -115,13 +119,12 @@ class _UploadStatusState extends State<UploadStatus> {
                 children: [
                   IconButton(
                       onPressed: (){
-                        Container();
+                        _onImageButtonPressed(ImageSource.gallery, context: context);
                       },
                       icon: Icon(Icons.image),
                   ),
                   IconButton(
                     onPressed: (){
-                      print("1");
                     },
                     icon: Icon(Icons.send),
                   ),
@@ -133,7 +136,33 @@ class _UploadStatusState extends State<UploadStatus> {
       ),
     );
   }
-
+  void _onImageButtonPressed(ImageSource source, {BuildContext? context}) async {
+    final pickedFile = await _picker.pickImage(source: source,);
+    setState(() {
+      _imageFile = pickedFile;
+      },
+    );
+  }
+  Widget _previewImages() {
+    if (_imageFilePicker != null) {
+      return Semantics(
+                label: "image_picker_example_picked_image",
+                child: kIsWeb
+                    ? Image.network(_imageFilePicker.toString())
+                    : Image.file(File(_imageFilePicker!.path)),
+              );
+    } else if (_imageFilePicker != null) {
+      return Text(
+        'Pick image error: $_imageFilePicker',
+        textAlign: TextAlign.center,
+      );
+    } else {
+      return const Text(
+        '',
+        textAlign: TextAlign.center,
+      );
+    }
+  }
   @override
   void initState() {
     super.initState();
