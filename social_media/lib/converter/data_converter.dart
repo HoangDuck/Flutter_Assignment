@@ -153,21 +153,25 @@ class DataConvert with ChangeNotifier{
   //   final File file = File('${directory.path}/my_file.txt');
   //   await file.writeAsString(text);
   // }
-  onLikeButtonPress(Post post,User user){
+  bool onLikeButtonPress(Post post,User user,List<Post> listPosts){
+    bool value=false;
     if(isUserLikeThePost(post, user)){
-      post.likes!.remove(user);
+      post.likes!.removeWhere((item) => item.id == user.id);
       if(post.numberLikes!=null){
         post.numberLikes=post.numberLikes!-1;
+        value=false;
       }
     }else{
       post.likes!.add(user);
       if(post.numberLikes!=null){
         post.numberLikes=post.numberLikes!+1;
+        value=true;
       }
     }
     var json=jsonEncode(listPosts);
     stringDataPosts=json;
     updateDataPost(stringDataPosts);
+    return value;
   }
   bool isUserLikeThePost(Post post,User user){
     for(int i=0;i<post.likes!.length;i++){
