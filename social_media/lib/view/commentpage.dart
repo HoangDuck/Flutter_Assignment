@@ -10,7 +10,8 @@ import 'package:social_media/model/comment.dart';
 import 'package:social_media/model/posts.dart';
 //import 'package:social_media/view/uploadstatus.dart';
 class CommentPage extends StatefulWidget {
-  const CommentPage({Key? key}) : super(key: key);
+  final int? idPost;
+  const CommentPage({Key? key,this.idPost}) : super(key: key);
 
   @override
   _CommentPageState createState() => _CommentPageState();
@@ -27,7 +28,7 @@ class _CommentPageState extends State<CommentPage> {
   @override
   Widget build(BuildContext context) {
     DataConvert dataConvert=Provider.of<DataConvert>(context);
-    Post post=Provider.of<Post>(context);
+    Post post=findPost(widget.idPost!, dataConvert);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Material(
@@ -72,12 +73,11 @@ class _CommentPageState extends State<CommentPage> {
                     if(pathImage==""&&content==""){
                       return;
                     }else{
-                      await dataConvert.insertDataComment(content,pathImage,dataConvert.currentUser,post);
+                      await dataConvert.insertDataComment(content,pathImage,dataConvert.currentUser,widget.idPost!);
                       XFile? file;
                       _imageFilePicker=file;
                       txtToDoControllerComment=TextEditingController();
                       setState(() {
-                        post=Provider.of<Post>(context);
                       });
                     }
                     },
@@ -88,6 +88,14 @@ class _CommentPageState extends State<CommentPage> {
         ),
       ),
     );
+  }
+  Post findPost(int idPost,DataConvert dataConvert){
+    for(int i=0;i<dataConvert.listPosts.length;i++){
+      if(dataConvert.listPosts[i].id==idPost){
+        return dataConvert.listPosts[i];
+      }
+    }
+    return Post();
   }
   Widget _buildListComments(Post post){
     return ListView.builder(

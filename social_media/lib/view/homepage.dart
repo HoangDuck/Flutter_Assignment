@@ -328,13 +328,10 @@ class _ListPostsState extends State<ListPosts> {
                                           ]
                                       ),
                                       child:
-                                      MultiProvider(
-                                          providers: [
-                                            ChangeNotifierProvider<DataConvert>.value(value: dataConvert),
-                                            Provider<Post>.value(value: data),
-                                          ],
-                                          child:CommentPage(),
-                                      )
+                                      ChangeNotifierProvider.value(
+                                        value: dataConvert,
+                                          child: CommentPage(idPost: data.id,),
+                                      ),
                                     ),
                                 )
                             )
