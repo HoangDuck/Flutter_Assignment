@@ -2,6 +2,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media/core/converter/login_data_converter.dart';
@@ -41,28 +42,30 @@ class LoginPage extends StatelessWidget {
       future: _getIdUser(),
       builder: (context,snapshot)
       {
+        // khi có lỗi thì sẽ treo chữ GSOT
         if(snapshot.hasError){
           return Material(
-            child: Container(
-              color: Colors.white,
+            child: Container(color: Colors.white,
               child: Center(
                 child: Text("GSOT", style: titleAppGsotLoginPage),
               ),
             ),
           );
         }
+        //khi có dữ liệu là check trong pref có data user (bằng getIdUser) nếu -1
+        // thì trang login ngược lại thì vô page của user
         if(snapshot.hasData){
           if(snapshot.data!=-1){
             return PageAfterLogin();
           }
           return Provider<LoginDataConverter>.value(
               value: LoginDataConverter(),
-              child: Material(child: LoginPageUI()),
+              child: Material(child: loginAndRegisterUI(context)),
           );
         }
+        // mặc định là trạng thái không kết nối thì sẽ treo chữ GSOT
         return Material(
-          child: Container(
-            color: Colors.white,
+          child: Container(color: Colors.white,
             child: Center(
               child: Text("GSOT", style: titleAppGsotLoginPage),
             ),
@@ -71,7 +74,83 @@ class LoginPage extends StatelessWidget {
       },
     );
   }
+  Widget loginAndRegisterUI(BuildContext context){
+    return Column(
+      children: [
+        Expanded(child: Container(
+          color: Colors.red,
+        )),
+        Container(
+          padding: EdgeInsets.only(
+              top:MediaQuery.of(context).size.width*0.2,
+              bottom: MediaQuery.of(context).size.width*0.2,
+          ),
+          child: Center(
+            child: Column(
+              children: [
+                Text("Or",
+                  style: TextStyle(
+                      fontSize: 38,
+                      color: Color(0xff6d6a6d),
+                      fontWeight: FontWeight.w300)
+                  ,),
+                Text("Login with",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xff4b4a4a),
+                      fontWeight: FontWeight.w300)
+                  ,),
+                Container(
+                  padding: EdgeInsets.only(top: 40),
+                  child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Color(0xff1245bd),
+                      child: IconButton(
+                          color: Colors.white,
+                          icon: Icon(LineIcons.facebookF),
+                          onPressed: (){
+                          }
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.red,
+                      child: IconButton(
+                          color: Colors.white,
+                          icon: Icon(LineIcons.googleLogo),
+                          onPressed: (){
+                          }
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.blue,
+                      child: IconButton(
+                          color: Colors.white,
+                          icon: Icon(LineIcons.twitter),
+                          onPressed: (){
+                          }
+                      ),
+                    ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
   Future<int>_getIdUser()async{
+    // hàm để check ID user có lưu trong pref không
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int id=-1;
     id= prefs.getInt('id') ?? -1;
