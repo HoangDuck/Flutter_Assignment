@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 final oCcy = NumberFormat("#,##0.00");
 
 void main() {
-  double num = 6;
+  double num = 6839450;
   String number = oCcy.format(num).toString();
   int index = number.lastIndexOf(".");
   number = number.replaceAll(",", ".");
