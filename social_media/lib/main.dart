@@ -102,34 +102,35 @@ class _FormUIState extends State<FormUI> {
           children:[
             Column(
               children: [
-                Expanded(child: Container(
-                    color: Colors.white,
-                    child: Stack(
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/login-bg2.jpg'),
-                          height: double.infinity,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          alignment: Alignment.topCenter,
-                          color: Colors.black54,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: MediaQuery.of(context).size.height*0.05,
-                              ),
-                              Image(
-                                  image: AssetImage('assets/images/logo.png')
-                              ),
-                              FormField(signInPress:signInPress,signUpPress:signUpPress),
-                            ],
+                Container(
+                  height: MediaQuery.of(context).size.height*0.65,
+                color: Colors.white,
+                child: Stack(
+                  children: [
+                    Image(
+                      image: AssetImage('assets/images/login-bg2.jpg'),
+                      height: double.infinity,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                    Container(
+                      alignment: Alignment.topCenter,
+                      color: Colors.black54,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height*0.05,
                           ),
-                        )
-                      ],
+                          Image(
+                              image: AssetImage('assets/images/logo.png')
+                          ),
+                          FormField(signInPress:signInPress,signUpPress:signUpPress),
+                        ],
+                      ),
                     )
-                )),
+                  ],
+                )
+                ),
                 Container(
                   color: Colors.white,
                   padding: EdgeInsets.only(
@@ -200,7 +201,7 @@ class _FormUIState extends State<FormUI> {
               ],
             ),
             Positioned(
-              bottom: MediaQuery.of(context).size.width*0.58,
+              bottom: MediaQuery.of(context).size.width*0.6,
               right: MediaQuery.of(context).size.width/2+10,
               child:  FloatingActionButton.extended(
                 onPressed: () {
@@ -216,7 +217,7 @@ class _FormUIState extends State<FormUI> {
               ),
             ),
             Positioned(
-              bottom: MediaQuery.of(context).size.width*0.58,
+              bottom: MediaQuery.of(context).size.width*0.6,//modify top
               left: MediaQuery.of(context).size.width/2+10,
               child:  FloatingActionButton.extended(
                 onPressed: () {
@@ -412,7 +413,7 @@ class _FormFieldState extends State<FormField> {
             Container(
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.015,),
               alignment: Alignment.center,
-              child: Text("Already Have An Account",style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w300),),
+              child: Text("Already Have An Account?",style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w300),),
             )
           ],
         )
