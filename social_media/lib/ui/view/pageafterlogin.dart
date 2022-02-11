@@ -48,17 +48,29 @@ class _PagesState extends State<Pages> {
     return ChangeNotifierProvider<DataConvert>.value(
       value: dataConvert,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xffff2C55),
-          onPressed: (){
-            setState(() {
-              popupAdd(context,dataConvert);
-            });
-          },
-          child: Icon(Icons.close),
+        floatingActionButton: SizedBox(
+          height: 75.0,
+          width: 75.0,
+          child: FittedBox(
+            child: FloatingActionButton(
+              backgroundColor: Color(0xffff2C55),
+              child: Icon(Icons.close),
+              onPressed: () {
+                setState(() {
+                  popupAdd(context,dataConvert);
+                });
+              },
+            ),
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
         appBar: AppBar(
+          bottom: PreferredSize(
+              child: Container(
+                color: Color(0xffff2f64),
+                height: 3.0,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
           backgroundColor: Color(0xfff1f2f6),
           actions: [
             Expanded(child: IconButton(
@@ -101,15 +113,6 @@ class _PagesState extends State<Pages> {
               children: <Widget>[
                 iconButton(Icon(LineIcons.home,color: Color(0xffff2f64),),0),
                 iconButton(Icon(LineIcons.bell,color: Color(0xffff2f64),),1),
-                // IconButton(
-                //   iconSize: 30.0,
-                //   icon: const Icon(Icons.add_box_rounded,color: Color(0xff4a0072),),
-                //   onPressed: () {
-                //     setState(() {
-                //       popupAdd(context,dataConvert);
-                //     });
-                //   },
-                // ),
                 SizedBox(width: MediaQuery.of(context).size.width*0.2,),
                 iconButton(Icon(LineIcons.commentDots,color: Color(0xffff2f64),),3),
                 iconButton(Icon(LineIcons.user,color: Color(0xffff2f64),),4)

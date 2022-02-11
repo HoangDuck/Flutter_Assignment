@@ -131,11 +131,12 @@ class _FormUIState extends State<FormUI> {
                   ],
                 )
                 ),
+                Expanded(child:
                 Container(
                   color: Colors.white,
                   padding: EdgeInsets.only(
-                    top:MediaQuery.of(context).size.width*0.15,
-                    bottom: MediaQuery.of(context).size.width*0.15,
+                    top:MediaQuery.of(context).size.width*0.1,
+                    bottom: MediaQuery.of(context).size.width*0.1,
                   ),
                   child: Center(
                     child: Column(
@@ -152,52 +153,52 @@ class _FormUIState extends State<FormUI> {
                               color: Color(0xff4b4a4a),
                               fontWeight: FontWeight.w300)
                           ,),
-                        Container(
-                          padding: EdgeInsets.only(top: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
 
-                            children: [
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Color(0xff1245bd),
-                                child: IconButton(
-                                    color: Colors.white,
-                                    icon: Icon(LineIcons.facebookF),
-                                    onPressed: (){
-                                    }
-                                ),
+                          children: [
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Color(0xff1245bd),
+                              child: IconButton(
+                                  color: Colors.white,
+                                  icon: Icon(LineIcons.facebookF),
+                                  onPressed: (){
+                                  }
                               ),
-                              SizedBox(width: 15,),
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.red,
-                                child: IconButton(
-                                    color: Colors.white,
-                                    icon: Icon(LineIcons.googleLogo),
-                                    onPressed: (){
-                                    }
-                                ),
+                            ),
+                            SizedBox(width: 15,),
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.red,
+                              child: IconButton(
+                                  color: Colors.white,
+                                  icon: Icon(LineIcons.googleLogo),
+                                  onPressed: (){
+                                  }
                               ),
-                              SizedBox(width: 15,),
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.blue,
-                                child: IconButton(
-                                    color: Colors.white,
-                                    icon: Icon(LineIcons.twitter),
-                                    onPressed: (){
-                                    }
-                                ),
+                            ),
+                            SizedBox(width: 15,),
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.blue,
+                              child: IconButton(
+                                  color: Colors.white,
+                                  icon: Icon(LineIcons.twitter),
+                                  onPressed: (){
+                                  }
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         )
                       ],
                     ),
                   ),
-                )
+                ),)
               ],
             ),
             Positioned(
