@@ -19,7 +19,7 @@ const textSize15White=TextStyle(
 );
 const textSize18Bold=TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 const textSize20=TextStyle(
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
   fontSize: 20,
   color: Color(0xffff2f64),
 );

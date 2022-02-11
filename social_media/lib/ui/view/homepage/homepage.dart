@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+
 //import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/core/converter/data_converter.dart';
@@ -14,6 +15,10 @@ import 'package:social_media/ui/constant/text_styles.dart';
 
 //import 'package:social_media/ui/view/homepage/uploadstatus.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
+import 'package:social_media/ui/view/popupadd/popupadd.dart';
+import 'package:social_media/ui/widget/comment.dart';
+import 'package:social_media/ui/widget/share_post.dart';
+import 'package:social_media/ui/widget/textform_comment.dart';
 //import 'commentpage.dart';
 
 class HomePage extends StatelessWidget {
@@ -314,7 +319,12 @@ class _ListPostsState extends State<ListPosts> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    child: const Icon(LineIcons.list),
+                    child: IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: const Icon(Icons.more_horiz),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -327,7 +337,10 @@ class _ListPostsState extends State<ListPosts> {
             padding: const EdgeInsets.all(15),
             child: Text(
               data.content.toString(),
-              style: const TextStyle(fontSize: 20, color: Color(0xff92A0C7)),
+              style: const TextStyle(
+                fontSize: 20,
+                color: Color(0xff92A0C7),
+              ),
             ),
           ),
           Center(
@@ -404,11 +417,14 @@ class _ListPostsState extends State<ListPosts> {
               ),
               Row(
                 children: const [
-                  Icon(LineIcons.commentDots),
+                  Icon(
+                    LineIcons.commentDots,
+                    color: Color(0xffadb2d0),
+                  ),
                   Text(
                     "24 Comments",
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: Color(0xffadb2d0),
                     ),
                   )
                 ],
@@ -418,11 +434,14 @@ class _ListPostsState extends State<ListPosts> {
               ),
               Row(
                 children: const [
-                  Icon(LineIcons.shareSquare),
+                  Icon(
+                    LineIcons.shareSquare,
+                    color: Color(0xffadb2d0),
+                  ),
                   Text(
                     "56 Shares",
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: Color(0xffadb2d0),
                     ),
                   )
                 ],
@@ -458,23 +477,42 @@ class _ListPostsState extends State<ListPosts> {
                 //   },
                 // ),
                 // Text(data.numberLikes.toString(), style: textSize18Bold),
-                RaisedButton(
-                  onPressed: () => {},
-                  // padding: const EdgeInsets.all(0.0),
-                  child: Row(
-                    children: [
-                      Align(
+                SizedBox(
+                  height: 35,
+                  width: 90,
+                  child: TextButton(
+                    onPressed: () => {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: Icon(LineIcons.heart)),
-                      Container(
-                          margin: const EdgeInsets.only(left: 10.0),
+                          child: Icon(
+                            LineIcons.heart,
+                            color: Color(0xffadb2d0),
+                            size: 20,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: 10),
                           child: Text(
                             "Like",
-                          ))
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                            style: TextStyle(color: Color(0xffadb2d0)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius: BorderRadius.circular(5.0),
+                    // ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xfff5f4f9)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
+                    ),
                   ),
                 ),
                 // IconButton(
@@ -516,49 +554,93 @@ class _ListPostsState extends State<ListPosts> {
                 //     );
                 //   },
                 // ),
-                RaisedButton(
-                  onPressed: () => {},
-                  // padding: const EdgeInsets.all(0.0),
-                  child: Row(
-                    children: [
-                      Align(
+                SizedBox(
+                  height: 35,
+                  width: 110,
+                  child: TextButton(
+                    onPressed: () => {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: Icon(LineIcons.commentDots)),
-                      Container(
-                          margin: const EdgeInsets.only(left: 10.0),
+                          child: Icon(
+                            LineIcons.commentDots,
+                            color: Color(0xffadb2d0),
+                            size: 20,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: 10),
                           child: Text(
-                            "Comments",
-                          ))
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                            "Comment",
+                            style: TextStyle(color: Color(0xffadb2d0)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius: BorderRadius.circular(5.0),
+                    // ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xfff5f4f9)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
+                    ),
                   ),
                 ),
                 //Text(data.numberComments.toString(), style: textSize18Bold),
-                RaisedButton(
-                  onPressed: () => {},
-                  // padding: const EdgeInsets.all(0.0),
-                  child: Row(
-                    children: [
-                      Align(
+                SizedBox(
+                  height: 35,
+                  width: 90,
+                  child: TextButton(
+                    onPressed: (){
+                      popUpSharePost(context,dataConvert);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: Icon(LineIcons.commentDots)),
-                      Container(
-                          margin: const EdgeInsets.only(left: 10.0),
+                          child: Icon(
+                            LineIcons.shareSquare,
+                            color: Color(0xffadb2d0),
+                            size: 20,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: 10),
                           child: Text(
                             "Share",
-                          ))
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                            style: TextStyle(
+                              color: Color(0xffadb2d0),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xfff5f4f9)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 30,),
+          TextFormComment(),
+          Comment(),
+          Comment(),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             padding: EdgeInsets.only(top: 3, bottom: 2),
             child: FDottedLine(
