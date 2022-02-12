@@ -1,4 +1,4 @@
-name: social_media
+name: auto_scroll
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -34,14 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  provider: ^6.0.1
-  page_transition: ^2.0.4
-  shared_preferences: ^2.0.11
-  path_provider: ^2.0.8
-  image_picker: ^0.8.4+4
-  font_awesome_flutter: ^9.2.0
-  line_icons: ^2.0.1
-  fdottedline_nullsafety: ^2.0.0
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
@@ -66,17 +59,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/login-bg2.jpg
-    - assets/images/logo.png
-    - assets/images/create-new.png
-    - assets/images/good-noon.png
-    - assets/images/animate-bg.png
-    - assets/images/thumb.png
-    - assets/images/heart.png
-    - assets/images/smile.png
-    - assets/images/weep.png
-    - assets/images/giphy.webp
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
