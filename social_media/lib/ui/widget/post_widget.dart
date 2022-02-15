@@ -402,146 +402,152 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
     return GestureDetector(
       child: Container(
         padding: EdgeInsets.all(10),
-        child: Stack(
-          children:[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 65.0,
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                          left: 10,
-                          right: 10,
-                        ),
-                        child: SizedBox(
-                          height: 55,
-                          width: 55,
-                          child: CircleAvatar(
-                            radius: 30.0,
-                            backgroundImage: NetworkImage(
-                              widget.data.user!.picture.toString(),
-                            ),
-                            backgroundColor: Colors.transparent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children:[
+                Column(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 65.0,
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(
+                                  left: 10,
+                                  right: 10,
+                                ),
+                                child: SizedBox(
+                                  height: 55,
+                                  width: 55,
+                                  child: CircleAvatar(
+                                    radius: 30.0,
+                                    backgroundImage: NetworkImage(
+                                      widget.data.user!.picture.toString(),
+                                    ),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.data.user!.name.toString(),
+                                      style: textSize20,
+                                    ),
+                                    Text(
+                                      widget.data.user!.nickname.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color: Color(0xff92929E),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  alignment: Alignment.centerRight,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      final RenderBox? overlay = Overlay.of(context)!
+                                          .context
+                                          .findRenderObject() as RenderBox;
+                                      showMenu(
+                                        color: Color(0xfff6f6f6),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        context: context,
+                                        position: RelativeRect.fromRect(
+                                            _tapPosition! & const Size(30, 30),
+                                            // smaller rect, the touch area
+                                            Offset.zero &
+                                            overlay!
+                                                .size // Bigger rect, the entire screen
+                                        ),
+                                        items: [
+                                          PopupMenuItem(
+                                            onTap: () {
+                                              // int? idComment = comment.id;
+                                              // dataConvert.deleteDataComment(idPost!, idComment!);
+                                            },
+                                            child: dropdownMenuItemPost(
+                                              LineIcons.trash,
+                                              "Delete post",
+                                            ),
+                                          ),
+                                          PopupMenuItem(
+                                            onTap: () {
+                                              // int? idComment = comment.id;
+                                              // dataConvert.deleteDataComment(idPost!, idComment!);
+                                            },
+                                            child: dropdownMenuItemPost(
+                                              LineIcons.ban,
+                                              "Hide post",
+                                            ),
+                                          ),
+                                          PopupMenuItem(
+                                            onTap: () {
+                                              // int? idComment = comment.id;
+                                              // dataConvert.deleteDataComment(idPost!, idComment!);
+                                            },
+                                            child: dropdownMenuItemPost(
+                                              LineIcons.alternatePencil,
+                                              "Edit post",
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                    onTapDown: _storePosition,
+                                    child: Icon(Icons.more_horiz),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.data.user!.name.toString(),
-                              style: textSize20,
+                        Container(
+                          padding: const EdgeInsets.all(15),
+                          child: Text(
+                            widget.data.content.toString(),
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Color(0xff92A0C7),
                             ),
-                            Text(
-                              widget.data.user!.nickname.toString(),
-                              style: const TextStyle(
-                                fontSize: 15,
-                                color: Color(0xff92929E),
-                              ),
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.only(right: 10),
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () {
-                              final RenderBox? overlay = Overlay.of(context)!
-                                  .context
-                                  .findRenderObject() as RenderBox;
-                              showMenu(
-                                color: Color(0xfff6f6f6),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                context: context,
-                                position: RelativeRect.fromRect(
-                                    _tapPosition! & const Size(30, 30),
-                                    // smaller rect, the touch area
-                                    Offset.zero &
-                                    overlay!
-                                        .size // Bigger rect, the entire screen
-                                ),
-                                items: [
-                                  PopupMenuItem(
-                                    onTap: () {
-                                      // int? idComment = comment.id;
-                                      // dataConvert.deleteDataComment(idPost!, idComment!);
-                                    },
-                                    child: dropdownMenuItemPost(
-                                      LineIcons.trash,
-                                      "Delete post",
-                                    ),
-                                  ),
-                                  PopupMenuItem(
-                                    onTap: () {
-                                      // int? idComment = comment.id;
-                                      // dataConvert.deleteDataComment(idPost!, idComment!);
-                                    },
-                                    child: dropdownMenuItemPost(
-                                      LineIcons.ban,
-                                      "Hide post",
-                                    ),
-                                  ),
-                                  PopupMenuItem(
-                                    onTap: () {
-                                      // int? idComment = comment.id;
-                                      // dataConvert.deleteDataComment(idPost!, idComment!);
-                                    },
-                                    child: dropdownMenuItemPost(
-                                      LineIcons.alternatePencil,
-                                      "Edit post",
-                                    ),
-                                  ),
-                                ],
+                        Center(
+                          child: Image.network(
+                            widget.data.image.toString(),
+                            errorBuilder: (context, error, stacktrace) {
+                              if (widget.data.image.toString() == "") {
+                                return Container();
+                              }
+                              return Image.file(
+                                File(widget.data.image.toString()),
+                                errorBuilder: (context, error, stacktrace) {
+                                  return Container();
+                                },
                               );
                             },
-                            onTapDown: _storePosition,
-                            child: Icon(Icons.more_horiz),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
-                    widget.data.content.toString(),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color(0xff92A0C7),
+                        dottedLine(context),
+                      ],
                     ),
-                  ),
-                ),
-                Center(
-                  child: Image.network(
-                    widget.data.image.toString(),
-                    errorBuilder: (context, error, stacktrace) {
-                      if (widget.data.image.toString() == "") {
-                        return Container();
-                      }
-                      return Image.file(
-                        File(widget.data.image.toString()),
-                        errorBuilder: (context, error, stacktrace) {
-                          return Container();
-                        },
-                      );
-                    },
-                  ),
-                ),
-                dottedLine(context),
-                Stack(
-                  children: [
                     Column(
                       children: [
                         Row(
@@ -769,18 +775,31 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                     ),
                   ],
                 ),
-                SizeTransition(
-                  axisAlignment: 1.0,
-                  sizeFactor: animation,
-                  child: TextFormComment(),
-                ),
-                Comment(),
-                Comment(),
-                Container(
-                  padding: EdgeInsets.only(top: 30),
-                  child: dottedLine(context),
+                Positioned(
+                  bottom: -60,
+                  child: Stack(
+                    children: <Widget>[
+                      // Box
+                      renderBox(),
+
+                      // Icons
+                      renderIcons(),
+                    ],
+                    alignment: Alignment.bottomLeft,
+                  ),
                 ),
               ],
+            ),
+            SizeTransition(
+              axisAlignment: 1.0,
+              sizeFactor: animation,
+              child: TextFormComment(),
+            ),
+            Comment(),
+            Comment(),
+            Container(
+              padding: EdgeInsets.only(top: 30),
+              child: dottedLine(context),
             ),
           ],
         ),
@@ -803,7 +822,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
             : isDraggingOutside
             ? zoomBoxWhenDragOutside.value
             : 50.0,
-        margin: EdgeInsets.only(left: 10.0),
+        margin: EdgeInsets.only(bottom: 130.0,left: 10.0),
       ),
       opacity: fadeInBox.value,
     );
@@ -1074,7 +1093,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       ),
       width: 300.0,
-      // height: MediaQuery.of(context).size.height*0.5,
+      height: 250.0,
       margin: EdgeInsets.only(left: moveRightGroupIcon.value, top: 65.0),
       // uncomment here to see area of draggable
       // color: Colors.amber.withOpacity(0.5),
