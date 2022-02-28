@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -44,20 +45,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height*0.9,
+        child: Center(
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              WidgetTest(),
+              WidgetTest(),
+              WidgetTest(),
+              WidgetTest(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -65,6 +64,40 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+class WidgetTest extends StatefulWidget {
+  const WidgetTest({Key? key}) : super(key: key);
+
+  @override
+  _WidgetTestState createState() => _WidgetTestState();
+}
+
+class _WidgetTestState extends State<WidgetTest> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 50,
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 100,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, i) {
+              return SizedBox(
+                height: 30,
+                child: Text("Hello"),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
